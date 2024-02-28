@@ -1,0 +1,22 @@
+# Node.js
+node_modules/
+
+# macOS
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Build artifacts
+dist/
+build/
+
+# Environment variables
+.env
+
+# Visual Studio Code
+.vscode/
+
+# Dependency directory
+bower_components/
