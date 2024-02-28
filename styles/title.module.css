@@ -1,0 +1,22 @@
+.title_box {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 15px;
+    background: #708090;
+}
+
+.h1 {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.h5 {
+    display: block;
+    font-size: .83em;
+    font-weight: bold;
+}
