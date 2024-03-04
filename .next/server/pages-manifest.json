@@ -2,6 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/contacts": "pages/contacts.js",
-  "/privacy": "pages/privacy.js"
+  "/movie/add": "pages/movie/add.js",
+  "/": "pages/index.js",
+  "/movie/[id]": "pages/movie/[id].js"
 }

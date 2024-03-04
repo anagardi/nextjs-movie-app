@@ -19,8 +19,7 @@ function Header() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    pr: "25px",
-                    pl:  "25px", 
+                    p: "25px",
                     minWidth: "400px",
                 }}
             >

@@ -1,0 +1,37 @@
+.movie_year_full,
+.movie_runtime_full,
+.movie_genres_full,
+.movie_actors_full,
+.movie_directors_full {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.category_container {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.movie_genre_full {
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    color: "text.primary";
+}
+
+.movie_title_full {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 30px;
+    padding-bottom: 50px;
+    color: "text.primary";
+}
+
+.category_title {
+    font-weight: 700;
+    min-width: 100px;
+    color: "text.primary";
+    text-align: left;
+}
