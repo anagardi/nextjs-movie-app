@@ -108,13 +108,17 @@ function MovieForm() {
         }
     }, [id]);
 
+    const [title, setTitle] = useState("");
+    const [year, setYear] = useState(1900);
+    const [runtime, setRuntime] = useState(0);
     const [genres, setGenres] = useState([]);
-
     const [directors, setDirectors] = useState([]);
-
     const [actors, setActors] = useState([]);
+    const [plot, setPlot] = useState("");
+    const [poster, setPoster] = useState("");
 
     useEffect(() => {
+        setTitle(movie?.title?.toUpperCase());
         setGenres(movie?.genres);
         setDirectors(movie?.directors);
         setActors(movie?.actors);
@@ -134,7 +138,7 @@ function MovieForm() {
             <Card sx={{ display: 'flex', width: "50%", maxWidth: "60%", justifyContent: "center", alignItems: "center", m: "40px 25%" }}>
                 <form onSubmit={handleSubmit} autoComplete="off">
                     <CardContent sx={{ p: "40px" }}>
-                        <FormTitle title={movie.title} />
+                        <FormTitle title={title} onChange={(value) => setTitle(value.toUpperCase())} />
                         {/* <Box sx={{display: "flex", justifyContent: "space-between"}} width="100%"> */}
                         <FormYear year={movie.year} />
                         <FormRuntime runtime={movie.runtime} />
