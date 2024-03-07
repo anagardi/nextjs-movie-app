@@ -20,7 +20,7 @@ export default function Home() {
     const url = `http://localhost:${port}/api/movie`;
 
     const [moviesList, setMoviesList] = useState([]);
-    const moviesListValue = { moviesList, setMoviesList };
+    // const moviesListValue = { moviesList, setMoviesList };
 
 
     // const [genres, setGenres] = useState([]);
@@ -187,7 +187,7 @@ export default function Home() {
                 justifyContent: "space-evenly",
                 p: "40px",
                 flexWrap: "wrap",
-                gap: "40px"
+                gap: "40px",
             }}>
                 {isLoading && <Loader />}
                 {!isLoading && (
@@ -205,6 +205,9 @@ export default function Home() {
                             poster_url={movie.poster_url}
                         />
                     )))}
+                {/* <i aria-hidden="true" style={{ width: 380, height: 400, }}></i> */}
+                {/* <i aria-hidden="true" style={{ width: 380, height: 400, }}></i> */}
+               
             </Box>
 
         </Layout>

@@ -19,11 +19,9 @@ function MovieForm() {
 
     const [isLoading, setIsLoading] = useState(true);
 
-    // const navigate = useNavigate();
-
     const router = useRouter()
     const { id } = router.query;
-    console.log(id);
+    console.log({ id });
 
     const port = 8000;
     const url = `http://localhost:${port}/api/movie/${id}`;
@@ -32,9 +30,9 @@ function MovieForm() {
         "title": "",
         "year": "",
         "runtime": "",
-        "genres": [""],
-        "directors": [""],
-        "actors": [""],
+        "genres": [],
+        "directors": [],
+        "actors": [],
         "plot": "",
         "poster_url": ""
     });
@@ -48,35 +46,6 @@ function MovieForm() {
             })
             .catch((error) => console.error(error));
     }
-
-
-    useEffect(() => {
-        if (id !== null) {
-            isLoading
-                &&
-                getMovie()
-                &&
-                setTimeout(() => {
-                    setIsLoading(false);
-                    console.log(movie);
-                }, 500);
-        }
-    }, [id, isLoading]);
-
-
-    // if (id) { movie = moviesList.find(movie => movie.id === Number(id)); }
-
-    // const { genres, setGenres } = useContext(GenresContext);
-
-    // const { directors, setDirectors } = useContext(DirectorsContext);
-
-    // const { actors, setActors } = useContext(ActorsContext);
-
-    const [genres, setGenres] = useState([]);
-
-    const [directors, setDirectors] = useState([]);
-
-    const [actors, setActors] = useState([]);
 
     function handleSubmit(e) {
 
@@ -126,40 +95,65 @@ function MovieForm() {
             .catch((error) => console.error(error));
     }
 
-    // useEffect(() => {
-    //     if (moviesList.length > 0) {
-    //         isLoading
-    //             &&
-    //             setTimeout(() => {
-    //                 setIsLoading(false);
-    //             }, 500);
-    //     }
-    // }, [moviesList, isLoading]);
 
     useEffect(() => {
-        setGenres(movie?.genres || []);
-        setDirectors(movie?.directors || []);
-        setActors(movie?.actors || []);
-    }, [movie, setGenres, setDirectors, setActors]);
+        if (id !== null) {
+            isLoading
+                &&
+                getMovie()
+                &&
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 500);
+        }
+    }, [id]);
 
+    const [genres, setGenres] = useState([]);
+
+    const [directors, setDirectors] = useState([]);
+
+    const [actors, setActors] = useState([]);
+
+    useEffect(() => {
+        setGenres(movie?.genres);
+        setDirectors(movie?.directors);
+        setActors(movie?.actors);
+    }, [movie]);
+
+    useEffect(() => {
+        console.log({ directors });
+    }, [directors]);
 
     return (
         isLoading
             ? <Loader />
             : movie &&
             // <FormControl sx={{ display: 'flex', width: "60%", maxWidth: "60%", justifyContent: "center", alignItems: "center", m: "40px 20%"}}>
-            <Card sx={{ display: 'flex', width: "60%", maxWidth: "60%", justifyContent: "center", alignItems: "center", m: "40px 20%" }}>
+            <Card sx={{ display: 'flex', width: "50%", maxWidth: "60%", justifyContent: "center", alignItems: "center", m: "40px 25%" }}>
                 <form onSubmit={handleSubmit} autoComplete="off">
                     <CardContent sx={{ p: "40px" }}>
                         <FormTitle title={movie.title} />
                         {/* <Box sx={{display: "flex", justifyContent: "space-between"}} width="100%"> */}
-                            <FormYear year={movie.year} />
-                            <FormRuntime runtime={movie.runtime} />
+                        <FormYear year={movie.year} />
+                        <FormRuntime runtime={movie.runtime} />
                         {/* </Box> */}
 
-                        <FormGenres genres={movie.genres} />
+                        <FormGenres genres={genres} />
 
-                        <FormDirectors directors={movie.directors} />
+                        <FormDirectors directors={directors}
+                            onAdd={() => { setDirectors([...directors, ""]) }}
+                            onDelete={(index) => {
+                                console.log({ index });
+                                let currentList = [...directors];
+                                currentList.splice(index, 1);
+                                setDirectors(currentList);
+                            }}
+                            onChange={(index, value) => {
+                                let currentList = [...directors];
+                                const updatedValue = value;
+                                currentList.splice(index, 1, updatedValue);
+                                setDirectors(currentList);
+                            }} />
 
                         {/* <FormActors actors={movie.actors} /> */}
 

@@ -34,14 +34,20 @@ function FormGenres(props) {
                 flexWrap: "wrap",
                 justifyContent: "space-between",
                 // gap: "5px",
-                p: "5px 20px",
+                p: "5px 0px",
                 fontSize: "12px"
             }}>
                 {
                     GenresList.map((genre, i) => (
-                        <FormControlLabel key={i} control={<Checkbox checked={genres?.includes(genre)} onChange={handleGenresChange} value={genre}/>} label={convertToTitleCase(genre, "-")} />
+                        <FormControlLabel key={i} control={<Checkbox checked={genres?.includes(genre)} onChange={handleGenresChange} value={genre} />} label={convertToTitleCase(genre, "-")} />
                     ))
                 }
+                <i aria-hidden="true"></i>
+                <i aria-hidden="true"></i>
+                <i aria-hidden="true"></i>
+                <i aria-hidden="true"></i>
+                <i aria-hidden="true"></i>
+                <i aria-hidden="true"></i>
             </Box>
         </FormLayout>
     );
