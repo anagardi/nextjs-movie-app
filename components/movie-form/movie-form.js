@@ -140,7 +140,16 @@ function MovieForm() {
                         <FormRuntime runtime={movie.runtime} />
                         {/* </Box> */}
 
-                        <FormGenres genres={genres} />
+                        <FormGenres genres={genres}
+                            onChange={(value) => {
+                                let updatedList = [...genres];
+                                if (genres.includes(value)) {
+                                    updatedList.splice(genres.indexOf(value), 1);
+                                } else {
+                                    updatedList = [...genres, value];
+                                }
+                                setGenres(updatedList);
+                            }} />
 
                         <FormDirectors directors={directors}
                             onAdd={() => { setDirectors([...directors, ""]) }}
