@@ -1,24 +1,28 @@
-import React, { useContext, useEffect } from "react";
-import AddActor from "./add-actor";
-import FormActor from "./form-actor";
+import FormLayout from "../form-layout";
+import { Button, Box, OutlinedInput, IconButton, CardMedia } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
 
-// import { ActorsContext } from "../../utilities/context";
+function FormDirectors(props) {
 
-function FormActors() {
+  return (
+        <FormLayout title="Actors:">
 
-    // const { actors } = useContext(ActorsContext);
-    useEffect(() => { console.log(actors)}, [actors]);
-    return (
-        <div className="actors">
-            <h4>Actors:</h4>
             {
-                actors?.map((actor, i) => (
-                    <FormActor key={i} value={actor} />
+                props.actors?.map((actor, i) => (
+                    <Box key={i} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", columnGap: "5px", width: "100%" }}>
+                        <OutlinedInput placeholder="Enter actor name" value={actor} sx={{ width: "100%" }} onChange={(e) => { props.onChange(props.actors.indexOf(actor), e.target.value) }} />
+                        <IconButton aria-label="delete" size="large" color="primary" style={{ borderRadius: 0 }}
+                            onClick={() => { props.onDelete(props.actors.indexOf(actor)) }}>
+                            <DeleteIcon fontSize="large" />
+                        </IconButton>
+                    </Box>
                 ))
             }
-            <AddActor />
-        </div>
+            <Box sx={{ display: "flex", width: "100%", justifyContent: "center", mt: "20px" }}>
+                <Button variant="contained" sx={{ backgroundColor: "primary.light", width: "100px" }} onClick={() => { props.onAdd() }}>Add</Button>
+            </Box>
+        </FormLayout >
     );
 }
 
-export default FormActors;
+export default FormDirectors;

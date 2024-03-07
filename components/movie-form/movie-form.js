@@ -121,8 +121,10 @@ function MovieForm() {
     }, [movie]);
 
     useEffect(() => {
+        console.log({ genres });
         console.log({ directors });
-    }, [directors]);
+        console.log({ actors });
+    }, [genres, directors, actors]);
 
     return (
         isLoading
@@ -155,7 +157,20 @@ function MovieForm() {
                                 setDirectors(currentList);
                             }} />
 
-                        {/* <FormActors actors={movie.actors} /> */}
+                        <FormActors actors={actors}
+                            onAdd={() => { setActors([...actors, ""]) }}
+                            onDelete={(index) => {
+                                console.log({ index });
+                                let currentList = [...actors];
+                                currentList.splice(index, 1);
+                                setActors(currentList);
+                            }}
+                            onChange={(index, value) => {
+                                let currentList = [...actors];
+                                const updatedValue = value;
+                                currentList.splice(index, 1, updatedValue);
+                                setActors(currentList);
+                            }} />
 
                         <FormPlot plot={movie.plot} />
 
