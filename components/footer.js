@@ -13,7 +13,7 @@ export default function Footer() {
 
     return (
 
-        <AppBar position="relative" color="primary" sx={{ top: 'auto', bottom: 0}}>
+        <AppBar position="static" color="primary" sx={{mt: "auto", bottom: 0}}>
             <Toolbar disableGutters={true}
                 sx={{
                     display: 'flex',

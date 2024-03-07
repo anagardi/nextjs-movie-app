@@ -6,7 +6,8 @@
     justify-content: center;
     width: 100%;
     padding: 15px;
-    background: #708090;
+    max-height: 100px;
+    min-height: 100px;
 }
 
 .h1 {
