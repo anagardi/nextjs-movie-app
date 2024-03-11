@@ -9,7 +9,7 @@ import { convertToTitleCase } from "/public/lib";
 export default function MovieCard(props) {
     return (
         <Link href={`/movie/${props.id}`}>
-            <Card sx={{ maxWidth: 380, maxHeight: 400 }}>
+            <Card sx={{ maxWidth: 380, maxHeight: 400, minWidth: 380, minHeight: 400}}>
                 <CardActionArea>
                     <CardMedia
                         component="img"

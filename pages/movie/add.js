@@ -1,4 +1,5 @@
 import Layout from "../../components/layout";
+import MovieForm from "../../components/movie/form";
 
 export default function Add() {
 
@@ -6,6 +7,7 @@ export default function Add() {
         <Layout
             title="Add Movie"
             subtitle="Expand Our Cinematic Universe. Add a New Movie to Our Database!">
+                <MovieForm/>
         </Layout>
     )
 }

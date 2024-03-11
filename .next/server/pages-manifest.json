@@ -3,7 +3,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/movie/[id]": "pages/movie/[id].js",
+  "/movie/add": "pages/movie/add.js",
   "/movie/edit/[id]": "pages/movie/edit/[id].js",
-  "/privacy": "pages/privacy.js"
+  "/movie/[id]": "pages/movie/[id].js"
 }

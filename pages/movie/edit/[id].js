@@ -1,5 +1,5 @@
 import Layout from "../../../components/layout";
-import MovieForm from "../../../components/edit-movie/movie-form";
+import MovieForm from "../../../components/movie/form";
 
 export default function EditMovie() {
 

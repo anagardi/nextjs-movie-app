@@ -32,15 +32,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/movie/[id].js"
     ],
+    "/movie/add": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/movie/add.js"
+    ],
     "/movie/edit/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/movie/edit/[id].js"
-    ],
-    "/privacy": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/privacy.js"
     ]
   },
   "ampFirstPages": []
