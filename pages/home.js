@@ -7,9 +7,9 @@ import Box from "@mui/material/Box"
 import Layout from "../components/layout"
 import MovieCard from "../components/movie-card"
 import Loader from "../components/loader"
-import { convertToTitleCase } from "../static/lib"
-import movies from "../static/movies"
-import genres from "../static/genres"
+import { convertToTitleCase } from "/public/lib"
+import movies from "/public/movies"
+import genres from "/public/genres"
 
 
 export default function Home() {

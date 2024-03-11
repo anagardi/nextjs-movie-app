@@ -4,7 +4,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, CardActionArea } from '@mui/material';
 import Link from "next/link";
-import { convertToTitleCase } from "../static/lib";
+import { convertToTitleCase } from "/public/lib";
 
 export default function MovieCard(props) {
     return (
