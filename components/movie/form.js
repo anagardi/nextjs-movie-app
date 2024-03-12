@@ -8,7 +8,7 @@ import FormActors from "./components/actors"
 import FormPlot from "./components/plot"
 import FormPoster from "./components/poster"
 import Link from "next/link"
-import { Button, Box, CardContent, Card } from "@mui/material"
+import { Button, Box, CardContent, Card, CardMedia } from "@mui/material"
 import axios from "axios"
 import Loader from "../loader"
 import { useRouter } from 'next/router'
@@ -141,7 +141,12 @@ function MovieForm() {
             ? <Loader />
             : movie &&
             // <FormControl sx={{ display: 'flex', width: "60%", maxWidth: "60%", justifyContent: "center", alignItems: "center", m: "40px 20%"}}>
-            <Card sx={{ display: 'flex', width: "50%", alignItems: "center", justifyContent: "center", m: "40px 25%" }}>
+            <Card sx={{ display: 'flex', flexDirection: "column", width: "50%", alignItems: "center", justifyContent: "center", m: "40px 25%" }}>
+                <CardMedia
+                    component="img"
+                    height="170"
+                    image={id ? poster : "/static/images/streaming.webp"}
+                    alt="privacy policy" />
                 <CardContent sx={{ width: "100%", p: "40px" }}>
                     <form onSubmit={handleSubmit} autoComplete="off">
 
@@ -198,7 +203,7 @@ function MovieForm() {
 
                         <FormPlot name="plot" plot={plot} onChange={(value) => setPlot(value)} />
 
-                        <FormPoster name="poster_url" poster={poster} onChange={(value) => setPoster(value)}/>
+                        <FormPoster name="poster_url" poster={poster} onChange={(value) => setPoster(value)} />
 
                         <Box sx={{ display: 'flex', gap: "40px", justifyContent: "center", alignItems: "center", m: "35px 0 20px 0" }}>
                             <Button name="save" variant="contained" type="submit" sx={{ backgroundColor: "secondary.main", minWidth: '100px' }}>Save</Button>

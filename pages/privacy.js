@@ -6,7 +6,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Link from "next/link"
-import { Divider } from "@mui/material";
 
 export default function PrivacyPolicy() {
     return (
@@ -14,14 +13,14 @@ export default function PrivacyPolicy() {
             title="Privacy Policy"
             subtitle="Our Privacy Matters: Exploring the Fictional Realm Safely!">
 
-            <Card sx={{ m: "25px 25% 25px 25%", p: "25px", width: "50%", maxWidth: "50%", alignSelf: "center" }}>
+            <Card sx={{ m: "40px 25% 40px 25%", width: "50%", maxWidth: "50%", alignSelf: "center" }}>
                 <CardMedia
                     component="img"
-                    height="140"
-                    image={"/static/images/privacy.png"}
+                    height="170"
+                    image={"/static/images/privacypolicy.png"}
                     alt="privacy policy" />
                 <CardActionArea>
-                    <CardContent>
+                    <CardContent sx={{p: "40px"}}>
                         <Typography gutterBottom variant="body1" component="div" fontWeight="900" textAlign="justify">
                             Last updated: February 08, 2024
                         </Typography>
