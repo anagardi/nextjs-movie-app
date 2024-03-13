@@ -10,18 +10,19 @@ import Loader from "../components/loader"
 import { convertToTitleCase } from "/public/lib"
 import movies from "/public/movies"
 import genres from "/public/genres"
+import MenuItem from '@mui/material/MenuItem'
+import { TextField } from "@mui/material"
 
 
 export default function Home() {
-
 
     const port = 8000;
 
     const url = `http://localhost:${port}/api/movie`;
 
     const [moviesList, setMoviesList] = useState([]);
-    // const moviesListValue = { moviesList, setMoviesList };
 
+    // const moviesListValue = { moviesList, setMoviesList };
 
     // const [genres, setGenres] = useState([]);
     // const genresValue = { genres, setGenres };
@@ -59,11 +60,13 @@ export default function Home() {
     }
 
     //eslint-disable-next-line
-    useEffect(() => { getMovies(); }, []);
+    useEffect(() => {
+        getMovies();
+    }, []);
 
 
 
-    const emptyOption = " -- ";
+    const emptyOption = "None";
     const ascending = "year-ascending";
     const descending = "year-descending";
 
@@ -71,20 +74,11 @@ export default function Home() {
 
     const [listToShow, setListToShow] = useState([]);
 
-    const [selectedGenres, setSelectedGenres] = useState(null);
-    const [selectedSortOption, setSelectedSortOption] = useState(null);
-
+    const [selectedGenres, setSelectedGenres] = useState("");
+    const [selectedSortOption, setSelectedSortOption] = useState("");
 
     const genresArray = [...genres];
     const sortArray = [ascending, descending];
-
-    const optionsGenres = [{ value: emptyOption, label: emptyOption }, ...genresArray.map((genre, i) => (
-        { value: genre, label: convertToTitleCase(genre, "-") }
-    ))];
-
-    const optionsYear = [{ value: emptyOption, label: emptyOption }, ...sortArray.map((option, i) => (
-        { value: option, label: convertToTitleCase(option, " ") }
-    ))];
 
     const sortMoviesToShow = useCallback((array, howToSort) => {
         function sortAscending(array) {
@@ -103,20 +97,24 @@ export default function Home() {
         );
     }, [ascending]);
 
-    const handleChangeGenres = (selectedOption) => {
+    const handleChangeGenres = (event) => {
 
-        if (selectedOption.value === emptyOption) {
-            setSelectedGenres(null);
+        let selectedOption = event.target.value;
+
+        if (selectedOption === emptyOption) {
+            setSelectedGenres("");
         }
         else {
             setSelectedGenres(selectedOption);
         }
     };
 
-    const handleChangeSort = (selectedOption) => {
+    const handleChangeSort = (event) => {
+
+        let selectedOption = event.target.value;
 
         if (selectedOption.value === emptyOption) {
-            setSelectedSortOption(null);
+            setSelectedSortOption("");
         }
         else {
             setSelectedSortOption(selectedOption);
@@ -124,20 +122,23 @@ export default function Home() {
     };
 
     useEffect(() => {
+        console.log(moviesList);
+        console.log(selectedGenres);
+
         if (moviesList.length > 0) {
-            if (selectedGenres) {
+            if (selectedGenres !== "") {
                 let updatedList = moviesList.filter((movie) => (
-                    movie.genres.includes(selectedGenres.value)
+                    movie.genres.includes(selectedGenres)
                 ));
                 if (selectedSortOption) {
-                    updatedList = sortMoviesToShow(updatedList, selectedSortOption.value);
+                    updatedList = sortMoviesToShow(updatedList, selectedSortOption);
                 }
                 setListToShow(updatedList)
             }
             else {
                 let updatedList = [...moviesList];
                 if (selectedSortOption) {
-                    updatedList = sortMoviesToShow(updatedList, selectedSortOption.value);
+                    updatedList = sortMoviesToShow(updatedList, selectedSortOption);
                 }
                 setListToShow(updatedList);
             }
@@ -150,11 +151,9 @@ export default function Home() {
                 && setTimeout(() => {
                     setIsLoading(false);
                 }, 500);
-            // if (navigationRef.current) {
-            //     navigationRef.current.scrollIntoView({ behavior: 'smooth' });
-            // }
         }
     }, [listToShow, isLoading]);
+
 
     return (
         <Layout
@@ -164,7 +163,7 @@ export default function Home() {
                 <title>Movie App</title>
             </Head>
             <Link href="https://en.wikipedia.org/wiki/Sonic_the_Hedgehog_3_(film)">
-                <Box sx={{ display: "flex"}}>
+                <Box sx={{ display: "flex" }}>
                     {/* <CardMedia
                     component="img"
                     height="340"
@@ -181,7 +180,42 @@ export default function Home() {
                     />
                 </Box>
             </Link>
-
+            <Box sx={{ display: "flex", justifyContent: "flex-end" }} bgcolor="#F0F0F0">
+                <Box sx={{ width: 200, m: "25px" }}>
+                    <TextField
+                        select
+                        variant="outlined"
+                        value={selectedGenres}
+                        onChange={handleChangeGenres}
+                        id="genres-select"
+                        label="Browse By Genre..."
+                        fullWidth
+                    >
+                        <MenuItem value={""}>{emptyOption}</MenuItem>
+                        {
+                            genresArray.map((genre, i) => (
+                                <MenuItem key={i} value={genre}>{convertToTitleCase(genre, "-")}</MenuItem>
+                            ))}
+                    </TextField>
+                </Box>
+                <Box sx={{ width: 200, m: "25px" }}>
+                    <TextField
+                        select
+                        variant="outlined"
+                        value={selectedSortOption}
+                        onChange={handleChangeSort}
+                        id="sort-select"
+                        label="Sort By..."
+                        fullWidth
+                    >
+                        <MenuItem value={""}>{emptyOption}</MenuItem>
+                        {
+                            sortArray.map((sortOption, i) => (
+                                <MenuItem key={i} value={sortOption}>{convertToTitleCase(sortOption, "-")}</MenuItem>
+                            ))}
+                    </TextField>
+                </Box>
+            </Box>
             <Box sx={{
                 display: "flex",
                 justifyContent: "space-evenly",
@@ -207,7 +241,7 @@ export default function Home() {
                     )))}
                 {/* <i aria-hidden="true" style={{ width: 380, height: 400, }}></i> */}
                 {/* <i aria-hidden="true" style={{ width: 380, height: 400, }}></i> */}
-               
+
             </Box>
 
         </Layout>

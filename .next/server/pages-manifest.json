@@ -2,10 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/contacts": "pages/contacts.js",
-  "/about": "pages/about.js",
-  "/movie/add": "pages/movie/add.js",
   "/": "pages/index.js",
-  "/faqs": "pages/faqs.js",
-  "/privacy": "pages/privacy.js"
+  "/movie/add": "pages/movie/add.js",
+  "/about": "pages/about.js"
 }

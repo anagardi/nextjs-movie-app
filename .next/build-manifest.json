@@ -27,30 +27,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/about": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/about.js"
-    ],
-    "/contacts": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/contacts.js"
-    ],
-    "/faqs": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/faqs.js"
-    ],
     "/movie/add": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/movie/add.js"
-    ],
-    "/privacy": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/privacy.js"
     ]
   },
   "ampFirstPages": []
