@@ -27,10 +27,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/movie/add": [
+    "/movie/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/movie/add.js"
+      "static/chunks/pages/movie/[id].js"
     ]
   },
   "ampFirstPages": []

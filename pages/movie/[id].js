@@ -73,8 +73,7 @@ export default function FullMovieDescription() {
             {!isLoading && <Box>
                 <Card sx={{ display: 'flex', width: "70%", justifyContent: "center", alignItems: "center", m: "40px 15%" }}>
 
-                    <Box sx={{ display: 'flex', flexDirection: 'column', p: "40px" }}>
-                        <CardContent sx={{ flex: '1 0 auto' }}>
+                        <CardContent sx={{ flex: '1 0 auto', display: 'flex', flexDirection: 'column', p: "50px" }}>
                             <Box>
                                 <Box className={styles.movie_genres_full}>
                                     <Box className={styles.category_container}>
@@ -123,10 +122,9 @@ export default function FullMovieDescription() {
                                 </Box>
                             </Box>
                         </CardContent>
-                    </Box>
-                    <CardMedia
+                   <CardMedia
                         component="img"
-                        sx={{ width: 400 }}
+                        sx={{ width: 400, justifySelf: "flex-end" }}
                         image={movie?.poster_url}
                         alt={movie?.title + " film poster"}
                     />

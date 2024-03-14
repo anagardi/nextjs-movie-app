@@ -180,7 +180,14 @@ export default function Home() {
                     />
                 </Box>
             </Link>
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }} bgcolor="#F0F0F0">
+            <Box sx={{
+                display: "flex", justifyContent: "flex-end", m: "0 auto",
+                position: "-webkit-sticky",
+                position: "sticky",
+                top: "0",
+                zIndex: "5"
+            }}
+                bgcolor="#F0F0F0">
                 <Box sx={{ width: 200, m: "25px" }}>
                     <TextField
                         select
